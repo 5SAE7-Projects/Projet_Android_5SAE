@@ -144,6 +144,7 @@ public class LogInFragment extends Fragment {
         }
         else {
             if (Objects.equals(user.getRole(), "admin")){
+                intentadmin.putExtra("userid", connectedUser.getId());
                 startActivity(intentadmin);
             }
             else{

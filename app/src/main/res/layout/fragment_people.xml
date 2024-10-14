@@ -5,10 +5,109 @@
     android:layout_height="match_parent"
     tools:context=".fragments.admin.PeopleFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@drawable/login_background"
+        android:alpha="0.2"/>
 
+    <!-- Search Bar -->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Rechercher..." />
+
+    <!-- Filter Buttons by Role -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:padding="8dp">
+
+        <Button
+
+            android:id="@+id/filter_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="All"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/button_1"
+            android:onClick="filterByAll" />
+
+        <Button
+            android:id="@+id/filter_admin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Admin"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/button_1"
+            android:onClick="filterByAdmin" />
+
+        <Button
+            android:id="@+id/filter_student"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="User"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/button_1"
+            android:onClick="filterByStudent" />
+
+    </LinearLayout>
+
+    <!-- Filter by Gender -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter by gender"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="16dp" />
+
+        <ImageView
+            android:id="@+id/filter_male"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:contentDescription="Filter by Male"
+            android:src="@drawable/ic_male"
+            android:onClick="filterByMale" />
+
+        <ImageView
+            android:id="@+id/filter_female"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:contentDescription="Filter by Female"
+            android:src="@drawable/ic_female"
+            android:onClick="filterByFemale" />
+    </LinearLayout>
+
+    <!-- List of People -->
+    <ListView
+        android:id="@+id/userslistView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:paddingTop="150dp" />
 </FrameLayout>

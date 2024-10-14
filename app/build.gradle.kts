@@ -54,5 +54,9 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.gridlayout:gridlayout:1.0.0")
+    implementation("com.github.dhaval2404:imagepicker:2.1")
+
 
 }

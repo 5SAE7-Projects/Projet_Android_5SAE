@@ -68,8 +68,7 @@ public class SQLiteUserManager extends SQLiteOpenHelper {
                 .append(BIRTHDAY_FIELD).append(" TEXT, ")
                 .append(PHONE_NUMBER_FIELD).append(" TEXT, ")
                 .append(ABOUT_ME_FIELD).append(" TEXT, ")
-                .append(PROFILE_PICTURE_FIELD)
-                .append(" TEXT)")
+                .append(PROFILE_PICTURE_FIELD).append(" TEXT)")
                 .append(";");
         sqLiteDatabase.execSQL(sql.toString());
         System.out.println("table created");

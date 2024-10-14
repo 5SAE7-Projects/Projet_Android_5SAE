@@ -18,6 +18,7 @@ import tn.espritclubs.cinquieme_SAE_sept.fragments.admin.HomeFragment;
 import tn.espritclubs.cinquieme_SAE_sept.fragments.admin.PeopleFragment;
 import tn.espritclubs.cinquieme_SAE_sept.fragments.admin.ProfileFragment;
 import tn.espritclubs.cinquieme_SAE_sept.fragments.admin.SearchFragment;
+import tn.espritclubs.cinquieme_SAE_sept.fragments.mainapp.ResetPassword2Fragment;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -36,6 +37,11 @@ public class AdminActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
 
+                ProfileFragment profileFragment = new ProfileFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("userid", getIntent().getIntExtra("userid", -1));
+                profileFragment.setArguments(bundle);
+
                 if (item.getItemId() == R.id.navigation_home) {
                     selectedFragment = new HomeFragment();
                 } else if (item.getItemId() == R.id.navigation_search) {
@@ -43,7 +49,7 @@ public class AdminActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.navigation_people) {
                     selectedFragment = new PeopleFragment();
                 } else if (item.getItemId() == R.id.navigation_profile) {
-                    selectedFragment = new ProfileFragment();
+                    selectedFragment = profileFragment;
                 }
 
                 if (selectedFragment != null) {
