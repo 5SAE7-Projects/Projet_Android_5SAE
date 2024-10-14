@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Esprit Clubs</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_back_to_esprit_clubs">Welcome back to Esprit Clubs</string>
+    <string name="get_started">Get Started</string>
+    <string name="sign_up">Sign up.</string>
+    <string name="home">Home</string>
+</resources>
