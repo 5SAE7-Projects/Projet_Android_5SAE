@@ -135,9 +135,9 @@ public class SQLiteUserManager extends SQLiteOpenHelper {
                     Date birthday = getDateFromString(Stringbirthday);
                     String phoneNumber = result.getString(9);
                     String aboutMe = result.getString(10);
-                    //String profilePicture = result.getString(11);
+                    String profilePicture = result.getString(11);
 
-                    User user = new User(id, email, firstname, lastname, gender, password, role, birthday, phoneNumber, aboutMe, "profilePicture");
+                    User user = new User(id, email, firstname, lastname, gender, password, role, birthday, phoneNumber, aboutMe, profilePicture);
                     User.userArrayList.add(user);
                 }
             }
@@ -149,7 +149,7 @@ public class SQLiteUserManager extends SQLiteOpenHelper {
 
         ContentValues contentValues=new ContentValues();
         contentValues.put(ID_FIELD,user.getId());
-        contentValues.put(EMAIL_FIELD,user.getEmail());
+
         contentValues.put(FIRSTNAME_FIELD,user.getFirstname());
         contentValues.put(LASTNAME_FIELD,user.getLastname());
         contentValues.put(GENDER_FIELD,user.getGender());
@@ -161,6 +161,20 @@ public class SQLiteUserManager extends SQLiteOpenHelper {
         contentValues.put(PROFILE_PICTURE_FIELD,user.getProfilePicture());
 
         sqLiteDatabase.update(TABLE_NAME, contentValues, ID_FIELD + " =? ", new String[]{String.valueOf(user.getId())});
+    }
+
+    public void updateimageUserInDatabase(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PROFILE_PICTURE_FIELD, user.getProfilePicture());
+        int rowsAffected = db.update(TABLE_NAME, values, "id = ?", new String[]{String.valueOf(user.getId())});
+        db.close();
+
+        if (rowsAffected > 0) {
+            Log.d("Database Update", "Profile picture updated successfully for user ID: " + user.getId());
+        } else {
+            Log.d("Database Update", "Failed to update profile picture for user ID: " + user.getId());
+        }
     }
 
     private String getStringFormDate(Date date) {
