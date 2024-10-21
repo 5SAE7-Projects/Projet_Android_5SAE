@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EspritClubs</string>
+    <string name="change_profile_picture">تغيير صورة الملف الشخصي</string>
+    <string name="hello_blank_fragment">مرحبًا بالمكون الفارغ</string>
+    <string name="get_started">ابدأ الآن</string>
+    <string name="welcome_back_to_esprit_clubs">مرحبًا بعودتك إلى Esprit Clubs</string>
+    <string name="language">اللغة</string>
+    <string name="system_mode_automatically_adjusts_appearance_based_on_your_device_settings">
+        يقوم وضع النظام تلقائيًا بتعديل المظهر بناءً على إعدادات جهازك.
+    </string>
+    <string name="system_default">الإعدادات الافتراضية للنظام</string>
+    <string name="on">تشغيل</string>
+    <string name="off">إيقاف</string>
+    <string name="appearance">المظهر</string>
+    <string name="delete_saved_password">حذف كلمة المرور المحفوظة</string>
+    <string name="security_settings">إعدادات الأمان</string>
+    <string name="current_password">كلمة المرور الحالية</string>
+    <string name="enter_current_password">أدخل كلمة المرور الحالية</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="enter_new_password">أدخل كلمة المرور الجديدة</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="re_enter_new_password">أعد إدخال كلمة المرور الجديدة</string>
+    <string name="apply">تطبيق</string>
+    <string name="birthday">تاريخ الميلاد</string>
+    <string name="tell_something_about_yourself">أخبر شيئًا عن نفسك</string>
+    <string name="about_me">عني</string>
+    <string name="enter_your_phone_number">أدخل رقم هاتفك</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="enter_your_birthday">أدخل تاريخ ميلادك</string>
+    <string name="gender">الجنس *</string>
+    <string name="enter_your_last_name">أدخل اسم عائلتك</string>
+    <string name="last_name">اللقب *</string>
+    <string name="enter_your_first_name">أدخل اسمك الأول</string>
+    <string name="first_name">الاسم الأول *</string>
+    <string name="enter_your_email">أدخل بريدك الإلكتروني</string>
+    <string name="email">البريد الإلكتروني *</string>
+    <string name="x">X</string>
+    <string name="X">X</string>
+    <string name="Apply">تطبيق</string>
+    <string name="role">الدور</string>
+    <string name="cover_picture">صورة الغلاف</string>
+    <string name="change_cover_photo">تغيير صورة الغلاف</string>
+    <string name="profile_picture">صورة الملف الشخصي</string>
+    <string name="Email">البريد الإلكتروني</string>
+    <string name="Gender">الجنس</string>
+    <string name="Birthday">تاريخ الميلاد</string>
+    <string name="edit_your_informations_here">قم بتحرير معلوماتك هنا</string>
+    <string name="personal_details">تفاصيل شخصية</string>
+    <string name="password">كلمة المرور</string>
+</resources>
