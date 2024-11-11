@@ -1,11 +1,4 @@
 <resources>
-    <string-array name="language_options">
-
-        <item>fr</item>
-        <item>en</item>
-        <item>ar</item>
-        <!-- Add other languages here -->
-    </string-array>
 
     <string name="app_name">EspritClubs</string>
     <!-- TODO: Remove or change this placeholder text -->

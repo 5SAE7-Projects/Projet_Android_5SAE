@@ -47,4 +47,5 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
     implementation("com.github.dhaval2404:imagepicker:2.1")
+
 }
