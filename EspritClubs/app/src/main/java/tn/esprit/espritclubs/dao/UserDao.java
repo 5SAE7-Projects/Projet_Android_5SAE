@@ -39,7 +39,4 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE uid = :uid")
     User getUserByUid(int uid);
 
-
-
-
 }

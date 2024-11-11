@@ -71,7 +71,7 @@ public class LoginFragment extends Fragment {
         password= view.findViewById(R.id.password);
         login= view.findViewById(R.id.login);
 
-        if(sp.contains("login") && sp.contains("password")){
+        if(sp.contains("login") || sp.contains("password")){
             username.setText(sp.getString("login", ""));
             password.setText(sp.getString("password", ""));
             verifiButtonLogin();
