@@ -1,28 +1,29 @@
 package tn.esprit.espritclubs.fragments.bacem;
 
 import android.os.Bundle;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.FrameLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 import tn.esprit.espritclubs.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BacemFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BacemFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private FrameLayout frameLayout;
+    private TabLayout tabLayout;
+    private RecyclerView recyclerView;
+    private FloatingActionButton addButton;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -30,15 +31,6 @@ public class BacemFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BacemFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static BacemFragment newInstance(String param1, String param2) {
         BacemFragment fragment = new BacemFragment();
         Bundle args = new Bundle();
@@ -57,10 +49,55 @@ public class BacemFragment extends Fragment {
         }
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bacem, container, false);
+        View view = inflater.inflate(R.layout.fragment_bacem, container, false);
+
+        // Initialize views
+        frameLayout = view.findViewById(R.id.frameLayout);
+        tabLayout = view.findViewById(R.id.tabLayout);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        addButton = view.findViewById(R.id.addButton);
+
+        // Set up initial fragment in frameLayout
+        getChildFragmentManager().beginTransaction().replace(R.id.frameLayout, new MessagesFragment())
+                .addToBackStack(null)
+                .commit();
+
+        // Set up tabLayout listener
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Fragment fragment = null;
+                switch (tab.getPosition()) {
+                    case 0:
+                        fragment = new MessagesFragment();
+                        break;
+                    case 1:
+                        fragment = new FavoritesFragment();
+                        break;
+                    case 2:
+                        fragment = new TaskFragment();
+                        break;
+                }
+                if (fragment != null) {
+                    getChildFragmentManager().beginTransaction()
+                            .replace(R.id.frameLayout, fragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
+
+        return view;
     }
 }

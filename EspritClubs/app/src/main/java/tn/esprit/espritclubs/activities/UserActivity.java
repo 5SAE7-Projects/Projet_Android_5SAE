@@ -11,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import tn.esprit.espritclubs.R;
 import tn.esprit.espritclubs.database.AppDatabase;
@@ -45,6 +48,10 @@ public class UserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FrameLayout frameLayout;
+        TabLayout tabLayout;
+        RecyclerView recyclerView;
+        FloatingActionButton addButton;
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_user);
@@ -120,6 +127,7 @@ public class UserActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     private void loadProfileImage() {
@@ -134,4 +142,5 @@ public class UserActivity extends AppCompatActivity {
                 mylogo.setImageResource(R.drawable.avatara);
         }
     }
+
 }
