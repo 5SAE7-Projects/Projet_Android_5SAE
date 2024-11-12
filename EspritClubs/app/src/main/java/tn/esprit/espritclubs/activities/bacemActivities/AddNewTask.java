@@ -14,18 +14,22 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.room.Room;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import tn.esprit.espritclubs.OnDialogCloseListener;
 import tn.esprit.espritclubs.R;
-import tn.esprit.espritclubs.activities.bacemActivities.Module.ToDoModle;
+import tn.esprit.espritclubs.dao.TaskDao;
+import tn.esprit.espritclubs.database.AppDatabase;
+import tn.esprit.espritclubs.entities.Task;
 
 public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "AddNewTask";
 
     private EditText mEditText;
     private Button mSaveButton;
+    private AppDatabase database;
 
     public static AddNewTask newInstance() {
         return new AddNewTask();
@@ -81,15 +85,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text = mEditText.getText().toString();
-                if (isUpdate) {
-                    // Update database code here
-                } else {
-                    ToDoModle item = new ToDoModle();
-                    item.setTask(text);
-                    item.setStatus(0);
-                    // Insert into the database code here
-                }
+                new bgThread().start();
                 dismiss();
             }
         });
@@ -101,6 +97,18 @@ public class AddNewTask extends BottomSheetDialogFragment {
         Activity activity = getActivity();
         if (activity instanceof OnDialogCloseListener) {
             ((OnDialogCloseListener) activity).onDialogClose(dialog);
+        }
+    }
+    class bgThread extends Thread
+    {
+        public void run(){
+            super.run();
+            database = AppDatabase.getDatabase(getContext());
+            TaskDao taskDao = database.taskDao();
+            if(mEditText.getText().toString().isEmpty())
+                return;
+            taskDao.insertTask(new Task(mEditText.getText().toString(),0));
+
         }
     }
 }

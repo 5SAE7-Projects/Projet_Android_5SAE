@@ -21,7 +21,7 @@ import java.util.List;
 import tn.esprit.espritclubs.OnDialogCloseListener;
 import tn.esprit.espritclubs.R;
 import tn.esprit.espritclubs.activities.bacemActivities.Adapter.ToDoAdapter;
-import tn.esprit.espritclubs.activities.bacemActivities.Module.ToDoModle;
+import tn.esprit.espritclubs.entities.Task;
 
 public class BacemFragment extends Fragment implements OnDialogCloseListener {
 
@@ -29,7 +29,7 @@ public class BacemFragment extends Fragment implements OnDialogCloseListener {
     private TabLayout tabLayout;
     private RecyclerView recyclerView;
     private FloatingActionButton addButton;
-    private List<ToDoModle> mList;
+    private List<Task> mList;
     private ToDoAdapter adapter;
 
     private static final String ARG_PARAM1 = "param1";

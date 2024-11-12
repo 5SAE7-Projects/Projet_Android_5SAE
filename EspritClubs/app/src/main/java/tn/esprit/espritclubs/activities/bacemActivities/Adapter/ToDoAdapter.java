@@ -12,10 +12,10 @@ import java.util.List;
 
 import tn.esprit.espritclubs.R;
 import tn.esprit.espritclubs.activities.bacemActivities.AddNewTask;
-import tn.esprit.espritclubs.activities.bacemActivities.Module.ToDoModle;
+import tn.esprit.espritclubs.entities.Task;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder> {
-    private List<ToDoModle> mList;
+    private List<Task> mList;
     private Fragment parentFragment;
 
     public ToDoAdapter(Fragment parentFragment) {
@@ -31,7 +31,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ToDoViewHolder holder, int position) {
-        final ToDoModle item = mList.get(position);
+        final Task item = mList.get(position);
         holder.checkBox.setText(item.getTask());
         holder.checkBox.setChecked(toBoolean(item.getStatus()));
         holder.checkBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
@@ -52,20 +52,20 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
         return mList != null ? mList.size() : 0;
     }
 
-    public void setTasks(List<ToDoModle> mList) {
+    public void setTasks(List<Task> mList) {
         this.mList = mList;
         notifyDataSetChanged();
     }
 
     public void deleteTask(int position) {
-        ToDoModle item = mList.get(position);
+        Task item = mList.get(position);
         mList.remove(position);
         notifyItemRemoved(position);
         // Optional: Update database to delete the task
     }
 
     public void editItem(int position) {
-        ToDoModle item = mList.get(position);
+        Task item = mList.get(position);
         // Update the database as needed
         Bundle bundle = new Bundle();
         bundle.putInt("Id", item.getId());
