@@ -5,6 +5,10 @@ public class ToDoModle {
     private int id,status;
     private boolean isDone;
 
+    public ToDoModle() {
+
+    }
+
     public void setTask(String task) {
         this.task = task;
     }
