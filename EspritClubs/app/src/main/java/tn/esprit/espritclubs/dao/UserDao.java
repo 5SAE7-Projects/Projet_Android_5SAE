@@ -24,11 +24,12 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
-    @Insert    void updateUser(User user);
+    @Insert
 
     void insertUser(User user);
 
     @Update
+    void updateUser(User user);
 
     @Query("SELECT * FROM user WHERE email = :email")
     User getUserByEmail(String email);

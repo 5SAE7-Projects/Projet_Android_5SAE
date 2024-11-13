@@ -1,4 +1,4 @@
-package tn.esprit.espritclubs.fragments;
+package tn.esprit.espritclubs.fragments.manef;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
