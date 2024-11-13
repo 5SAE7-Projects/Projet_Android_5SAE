@@ -15,7 +15,7 @@
         <item
             android:id="@+id/manef"
             android:icon="@drawable/ic_person"
-            android:title="Manef" />
+            android:title="Reservation" />
         <item
             android:id="@+id/anas"
             android:icon="@drawable/ic_person"
