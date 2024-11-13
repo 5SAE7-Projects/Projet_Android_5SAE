@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -23,6 +24,7 @@ import java.util.List;
 
 import tn.esprit.espritclubs.OnDialogCloseListener;
 import tn.esprit.espritclubs.R;
+import tn.esprit.espritclubs.RecyclerViewTouchHelper;
 import tn.esprit.espritclubs.activities.bacemActivities.Adapter.ToDoAdapter;
 import tn.esprit.espritclubs.activities.bacemActivities.AddNewTask;
 import tn.esprit.espritclubs.dao.TaskDao;
@@ -78,27 +80,28 @@ public class TaskFragment extends Fragment implements OnDialogCloseListener {
 
         addButton.setOnClickListener(view1 -> {
             AddNewTask.newInstance().show(getChildFragmentManager(), AddNewTask.TAG);
+
         });
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerViewTouchHelper(adapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         return view;
     }
 
     private void loadTasks() {
-            adapter = new ToDoAdapter(this);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setAdapter(adapter);
-
+        adapter = new ToDoAdapter(this.getContext());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(adapter);
         AppDatabase database = AppDatabase.getDatabase(getContext());
         TaskDao taskDao = database.taskDao();
         mList = taskDao.getAll();
         Collections.reverse(mList);
         adapter.setTasks(mList);
-        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onDialogClose(DialogInterface dialog) {
-        loadTasks();
+        this.loadTasks();
     }
 }

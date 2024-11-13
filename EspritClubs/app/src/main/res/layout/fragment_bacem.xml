@@ -34,7 +34,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_gravity="center"
-                    android:src="@drawable/photo"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
 
@@ -68,7 +67,6 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:background="@android:drawable/editbox_background"
-                    android:drawableEnd="@drawable/search"
                     android:gravity="center"
                     android:hint="Search..."
                     android:inputType="text"

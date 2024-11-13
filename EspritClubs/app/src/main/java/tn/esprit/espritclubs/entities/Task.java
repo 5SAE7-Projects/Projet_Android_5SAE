@@ -14,7 +14,7 @@ public class Task {
         this.status=status;
     }
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "tid")
+    @ColumnInfo(name = "id")
     private int id;
     private String task;
     private int status;

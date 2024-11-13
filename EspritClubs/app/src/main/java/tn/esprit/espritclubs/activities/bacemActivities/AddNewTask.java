@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import tn.esprit.espritclubs.OnDialogCloseListener;
 import tn.esprit.espritclubs.R;
+import tn.esprit.espritclubs.activities.bacemActivities.Adapter.ToDoAdapter;
 import tn.esprit.espritclubs.dao.TaskDao;
 import tn.esprit.espritclubs.database.AppDatabase;
 import tn.esprit.espritclubs.entities.Task;
@@ -28,8 +30,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "AddNewTask";
 
     private EditText mEditText;
+    private CheckBox checkBox;
     private Button mSaveButton;
     private AppDatabase database;
+    private ToDoAdapter adapter;
 
     public static AddNewTask newInstance() {
         return new AddNewTask();
@@ -47,10 +51,11 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
         mEditText = view.findViewById(R.id.editText);
         mSaveButton = view.findViewById(R.id.addButton1);
+        checkBox = view.findViewById(R.id.checkbox);
+
 
         Bundle bundle = getArguments();
         boolean isUpdate = bundle != null && bundle.containsKey("task");
-
         if (isUpdate) {
             String task = bundle.getString("task", "");
             mEditText.setText(task);
@@ -85,7 +90,18 @@ public class AddNewTask extends BottomSheetDialogFragment {
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new bgThread().start();
+                Bundle bundle = getArguments();
+                boolean isUpdate = bundle != null && bundle.containsKey("task");
+                database = AppDatabase.getDatabase(getContext());
+                TaskDao taskDao = database.taskDao();
+                if(mEditText.getText().toString().isEmpty())
+                    return;
+//                if(isUpdate){
+//                    update
+//                }
+//
+//                else{
+                taskDao.insertTask(new Task(mEditText.getText().toString(),0));
                 dismiss();
             }
         });
@@ -97,18 +113,6 @@ public class AddNewTask extends BottomSheetDialogFragment {
         Activity activity = getActivity();
         if (activity instanceof OnDialogCloseListener) {
             ((OnDialogCloseListener) activity).onDialogClose(dialog);
-        }
-    }
-    class bgThread extends Thread
-    {
-        public void run(){
-            super.run();
-            database = AppDatabase.getDatabase(getContext());
-            TaskDao taskDao = database.taskDao();
-            if(mEditText.getText().toString().isEmpty())
-                return;
-            taskDao.insertTask(new Task(mEditText.getText().toString(),0));
-
         }
     }
 }
