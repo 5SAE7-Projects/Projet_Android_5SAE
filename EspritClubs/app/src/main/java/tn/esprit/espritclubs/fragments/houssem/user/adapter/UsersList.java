@@ -46,22 +46,22 @@ public class UsersList extends ArrayAdapter<User> {
 
         //roles.setText(Arrays.toString(champ.getPositions()));
         //roles.setText(TextUtils.join(", ", champ.getRole()));
-        champimage.setImageURI(champ.getProfilePicture());
+        //champimage.setImageURI(champ.getProfilePicture());
 
         return convertView;
     }
 
 
     private void loadProfileImage() {
-        String profileImageUri = currentUser.getProfilePicture();
-        if (profileImageUri != null && !profileImageUri.isEmpty()) {
-            imageUri = Uri.parse(profileImageUri);
-            mylogo.setImageURI(imageUri);
-        } else {
-            if ("male".equalsIgnoreCase(currentUser.getGender()))
-                mylogo.setImageResource(R.drawable.avatar);
-            if ("female".equalsIgnoreCase(currentUser.getGender()))
-                mylogo.setImageResource(R.drawable.avatara);
-        }
+//        String profileImageUri = currentUser.getProfilePicture();
+//        if (profileImageUri != null && !profileImageUri.isEmpty()) {
+//            imageUri = Uri.parse(profileImageUri);
+//            mylogo.setImageURI(imageUri);
+//        } else {
+//            if ("male".equalsIgnoreCase(currentUser.getGender()))
+//                mylogo.setImageResource(R.drawable.avatar);
+//            if ("female".equalsIgnoreCase(currentUser.getGender()))
+//                mylogo.setImageResource(R.drawable.avatara);
+//        }
     }
 }
