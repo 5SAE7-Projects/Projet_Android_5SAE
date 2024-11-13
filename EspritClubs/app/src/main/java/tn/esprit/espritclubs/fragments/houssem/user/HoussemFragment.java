@@ -12,9 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -38,6 +38,8 @@ public class HoussemFragment extends Fragment {
     private ImageView junglefilter;
 
     private AppDatabase database;
+
+    private TextView aaa;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
