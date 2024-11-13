@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -24,6 +25,8 @@ public class HoussemFragment extends Fragment {
     private EditText nameEditText, emailEditText, dateEditText;
     private Button submitButton;
     private ReservationDao reservationDao;
+
+    private TextView aaa;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class HoussemFragment extends Fragment {
         emailEditText = view.findViewById(R.id.emailEditText);
         dateEditText = view.findViewById(R.id.dateEditText);
         submitButton = view.findViewById(R.id.submitButton);
+
+        aaa= view.findViewById(R.id.aaa);
 
         // Initialize ReservationDao
         reservationDao = AppDatabase.getDatabase(getContext()).reservationDao();
@@ -63,6 +68,7 @@ public class HoussemFragment extends Fragment {
                     });
                 }).start();
             }
+            loadAllReservations();
         });
 
         // Load all reservations (for testing purposes)
@@ -72,14 +78,22 @@ public class HoussemFragment extends Fragment {
     }
 
     private void loadAllReservations() {
-        // Fetch all reservations from the database
         LiveData<List<Reservation>> allReservations = reservationDao.getAllReservations();
-        allReservations.observe(getViewLifecycleOwner(), new Observer<List<Reservation>>() {
-            @Override
-            public void onChanged(List<Reservation> reservations) {
-                // For testing purposes, show the count of reservations in a Toast
-                Toast.makeText(getContext(), "Total reservations: " + reservations.size(), Toast.LENGTH_SHORT).show();
+        allReservations.observe(getViewLifecycleOwner(), reservations -> {
+            if (reservations != null) {
+                // Concatenate all reservations into a single string
+                StringBuilder reservationDetails = new StringBuilder();
+                for (Reservation reservation : reservations) {
+                    reservationDetails.append("Name: ").append(reservation.getName()).append("\n")
+                            .append("Email: ").append(reservation.getEmail()).append("\n")
+                            .append("Date: ").append(reservation.getClubName()).append("\n\n");
+                }
+                // Display in reservationTextView
+                aaa.setText(reservationDetails.toString());
             }
         });
     }
+
+
+
 }
