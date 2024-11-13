@@ -104,11 +104,9 @@ public class BacemFragment extends Fragment implements OnDialogCloseListener {
                         fragment = new MessagesFragment();
                         break;
                     case 1:
-                        fragment = new FavoritesFragment();
-                        break;
-                    case 2:
                         fragment = new TaskFragment();
                         break;
+
                 }
                 if (fragment != null) {
                     getChildFragmentManager().beginTransaction()

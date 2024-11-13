@@ -53,7 +53,6 @@ public class AddNewTask extends BottomSheetDialogFragment {
         mSaveButton = view.findViewById(R.id.addButton1);
         checkBox = view.findViewById(R.id.checkbox);
 
-
         Bundle bundle = getArguments();
         boolean isUpdate = bundle != null && bundle.containsKey("task");
         if (isUpdate) {

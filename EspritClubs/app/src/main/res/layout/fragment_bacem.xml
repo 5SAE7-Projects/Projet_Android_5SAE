@@ -23,7 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/top_background"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="50dp">
 
 
                 <ImageView
@@ -61,20 +62,7 @@
                     android:textStyle="bold"
                     tools:layout_editor_absoluteY="207dp" />
 
-                <EditText
-                    android:id="@+id/editTextText"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:background="@android:drawable/editbox_background"
-                    android:gravity="center"
-                    android:hint="Search..."
-                    android:inputType="text"
-                    android:padding="16dp"
-                    android:textColor="#0F0F0F"
-                    android:textColorHint="#0F0F0F"
-                    android:textStyle="italic"
-                    android:layout_marginTop="50dp"/>
+
 
             </LinearLayout>
             <com.google.android.material.tabs.TabLayout
@@ -92,11 +80,6 @@
                     android:layout_height="wrap_content"
                     android:icon="@drawable/baseline_work_outline_24"
                     />
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/favorites"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/baseline_stars_24"/>
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tasks"
                     android:layout_width="wrap_content"
