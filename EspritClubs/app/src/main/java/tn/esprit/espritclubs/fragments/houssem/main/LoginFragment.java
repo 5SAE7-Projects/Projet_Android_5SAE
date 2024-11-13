@@ -47,17 +47,20 @@ public class LoginFragment extends Fragment {
     }
 
     private void loadFromDBToMemory() {
-        database= AppDatabase.getDatabase(getContext());
+        database = AppDatabase.getDatabase(getContext());
         User.userArrayList.clear();
         User.userArrayList.addAll(database.userDao().getAll());
+
         User admin = database.userDao().getUserByEmail("admin");
         if (admin == null) {
-            admin = new User("admin", "admin", "admin@example.com", "male", "admin", "admin");
+            admin = new User("admin", "admin", "admin@esprit.tn", "male", "admin", "admin");
             database.userDao().insertUser(admin);
+            System.out.println("Default Admin created with email: admin@example.com");
         } else {
             System.out.println("Default Admin already exists");
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,7 +74,7 @@ public class LoginFragment extends Fragment {
         password= view.findViewById(R.id.password);
         login= view.findViewById(R.id.login);
 
-        if(sp.contains("login") || sp.contains("password")){
+        if(sp.contains("login") && sp.contains("password")){
             username.setText(sp.getString("login", ""));
             password.setText(sp.getString("password", ""));
             verifiButtonLogin();
@@ -98,7 +101,7 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                loadFromDBToMemory();
             }
         });
 

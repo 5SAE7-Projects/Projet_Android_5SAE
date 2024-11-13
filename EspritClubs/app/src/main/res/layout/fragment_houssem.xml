@@ -5,12 +5,51 @@
     android:layout_height="match_parent"
     tools:context=".fragments.houssem.user.HoussemFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_gravity="center"
+    <SearchView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="100dp"
-        android:text="oumayma is the hh" />
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:iconifiedByDefault="false"
+        android:queryHint="Rechercher..."/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@drawable/gradientbg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:id="@+id/allfilter"
+            android:text="All"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/topfilter"
+            android:src="@drawable/avatar"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/junglefilter"
+            android:src="@drawable/avatara"/>
+
+
+
+    </LinearLayout>
+    <ListView
+        android:paddingTop="100dp"
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"/>
 
 </FrameLayout>
