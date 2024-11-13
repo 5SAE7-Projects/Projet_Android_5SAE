@@ -19,11 +19,11 @@
         <item
             android:id="@+id/anas"
             android:icon="@drawable/ic_person"
-            android:title="Anas" />
+            android:title="Forum" />
         <item
             android:id="@+id/houssem"
             android:icon="@drawable/ic_person"
-            android:title="Houssem" />
+            android:title="Gestion" />
     </group>
 
     <item
