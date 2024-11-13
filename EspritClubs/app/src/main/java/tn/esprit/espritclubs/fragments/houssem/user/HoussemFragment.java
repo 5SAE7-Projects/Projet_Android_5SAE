@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -132,5 +134,17 @@ public class HoussemFragment extends Fragment {
         searchView.setQuery("", false);
         searchView.clearFocus();
         filterList("Female"); // Adjust this value if your User class uses different gender identifiers
+    }
+
+    private void loadAllReservations() {
+        // Fetch all reservations from the database
+        LiveData<List<Reservation>> allReservations = reservationDao.getAllReservations();
+        allReservations.observe(getViewLifecycleOwner(), new Observer<List<Reservation>>() {
+            @Override
+            public void onChanged(List<Reservation> reservations) {
+                // For testing purposes, show the count of reservations in a Toast
+                Toast.makeText(getContext(), "Total reservations: " + reservations.size(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

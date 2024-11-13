@@ -48,7 +48,7 @@ public class ClubListFragment extends Fragment {
 
     private void navigateToReservationForm(Club club) {
         // Navigate to ReservationFormFragment, passing club information
-        tn.esprit.espritclubs.fragments.ReservationFormFragment reservationFragment = tn.esprit.espritclubs.fragments.ReservationFormFragment.newInstance(club.getName());
+        ReservationFormFragment reservationFragment = ReservationFormFragment.newInstance(club.getName());
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, reservationFragment)
                 .addToBackStack(null)

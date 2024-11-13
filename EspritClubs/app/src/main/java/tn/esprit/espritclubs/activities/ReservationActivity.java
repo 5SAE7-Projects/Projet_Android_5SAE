@@ -53,7 +53,7 @@ public class ReservationActivity extends AppCompatActivity {
                 new Thread(() -> {
                     reservationDao.insertReservation(reservation);
                     runOnUiThread(() -> Toast.makeText(ReservationActivity.this, "Reservation Confirmed for " + clubName, Toast.LENGTH_SHORT).show());
-                }).start();
+                });
             }
         });
 
@@ -68,7 +68,7 @@ public class ReservationActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Reservation> reservations) {
                 // For now, just show the count of reservations in a Toast
-                Toast.makeText(ReservationActivity.this, "Total reservations: " + reservations.size(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReservationActivity.this, "Total reservations: " + reservations.size(), Toast.LENGTH_SHORT).show();
             }
         });
     }

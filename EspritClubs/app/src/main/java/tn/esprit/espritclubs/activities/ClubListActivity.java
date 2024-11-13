@@ -3,6 +3,7 @@ package tn.esprit.espritclubs.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,16 +25,25 @@ public class ClubListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ClubAdapter clubAdapter;
     private ClubDao clubDao;
+    private Button reserve_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_club_list);
+        setContentView(R.layout.item_club);
 
         // Initialize RecyclerView
-        recyclerView = findViewById(R.id.recyclerView);
+        //recyclerView = findViewById(R.id.recyclerView);
+        reserve_button = findViewById(R.id.reserve_button);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+        reserve_button.setOnClickListener(manef->{
+            Intent intent = new Intent(this, ReservationActivity.class);
+            //intent.putExtra("CLUB_NAME", club.getName());
+            startActivity(intent);
+
+        });
         AppDatabase database = AppDatabase.getDatabase(this);
         // Initialize ClubDao
         clubDao = AppDatabase.getDatabase(this).clubDao();
@@ -49,13 +59,8 @@ public class ClubListActivity extends AppCompatActivity {
                     clubAdapter = new ClubAdapter(clubs, new ClubAdapter.OnItemClickListener() {
                         @Override
                         public void onReserveClicked(Club club) {
-
-
-
                             // Navigate to reservation screen when a "Reserve" button is clicked
-                            Intent intent = new Intent(ClubListActivity.this, ReservationActivity.class);
-                            intent.putExtra("CLUB_NAME", club.getName());
-                            startActivity(intent);
+                            System.out.println("");
                         }
                     });
                     recyclerView.setAdapter(clubAdapter);
