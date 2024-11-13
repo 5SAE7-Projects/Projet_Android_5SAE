@@ -9,9 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 import tn.esprit.espritclubs.R;
@@ -62,6 +67,7 @@ public class MessagesFragment extends Fragment {
     private Button button;
     private AppDatabase database;
     private EditText editText;
+    private LinearLayout messagesContainer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,6 +87,7 @@ public class MessagesFragment extends Fragment {
         generateQuoteButton = view.findViewById(R.id.generateQuoteButton);
         button = view.findViewById(R.id.sendButton);
         editText = view.findViewById(R.id.messageInput);
+        messagesContainer = view.findViewById(R.id.messagesContainer);
         // Initialize the quotes list
         quotes = new ArrayList<>();
         quotes.add("The best way to get started is to quit talking and begin doing.");
@@ -106,8 +113,8 @@ public class MessagesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 database = AppDatabase.getDatabase(getContext());
-
                 database.messageDao().insertTMessage(new Message(editText.getText().toString()));
+                addMessage();
             }
         });
         // Inflate the layout for this fragment
@@ -116,5 +123,28 @@ public class MessagesFragment extends Fragment {
     private String getRandomQuote() {
         int index = random.nextInt(quotes.size());
         return quotes.get(index);
+    }
+    private void addMessage() {
+        String message = editText.getText().toString().trim();
+        if (!message.isEmpty()) {
+
+            Date today = Calendar.getInstance().getTime();//getting date
+            SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd hh:mm:ss");//formating according to my need
+            String date = formatter.format(today);
+            TextView messageTextView = new TextView(getContext());
+            TextView dateView = new TextView(getContext());
+            messageTextView.setText(message);
+            messageTextView.setTextSize(16);
+            messageTextView.setPadding(8, 8, 8, 8);
+
+            dateView.setText(date);
+            // Add message TextView to the container
+            messagesContainer.addView(messageTextView);
+            messagesContainer.addView(dateView);
+            // Clear the input field
+            editText.setText("");
+        } else {
+            Toast.makeText(getContext(), "Please enter a message", Toast.LENGTH_SHORT).show();
+        }
     }
 }

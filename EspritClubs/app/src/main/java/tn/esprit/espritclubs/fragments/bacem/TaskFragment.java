@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -54,6 +55,7 @@ public class TaskFragment extends Fragment implements OnDialogCloseListener {
 
     private FrameLayout frameLayout;
     private TabLayout tabLayout;
+    private LinearLayout linearLayout;
     private RecyclerView recyclerView;
     private FloatingActionButton addButton;
     private List<Task> mList = new ArrayList<>();
@@ -75,10 +77,12 @@ public class TaskFragment extends Fragment implements OnDialogCloseListener {
         View view = inflater.inflate(R.layout.fragment_task, container, false);
         recyclerView = view.findViewById(R.id.recyclerView);
         addButton = view.findViewById(R.id.addButton1);
+        linearLayout = view.findViewById(R.id.task);
 
         loadTasks();
 
         addButton.setOnClickListener(view1 -> {
+
             AddNewTask.newInstance().show(getChildFragmentManager(), AddNewTask.TAG);
 
         });
@@ -89,10 +93,12 @@ public class TaskFragment extends Fragment implements OnDialogCloseListener {
     }
 
     private void loadTasks() {
+
         adapter = new ToDoAdapter(this.getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
+
         AppDatabase database = AppDatabase.getDatabase(getContext());
         TaskDao taskDao = database.taskDao();
         mList = taskDao.getAll();
@@ -102,6 +108,8 @@ public class TaskFragment extends Fragment implements OnDialogCloseListener {
 
     @Override
     public void onDialogClose(DialogInterface dialog) {
+        linearLayout.removeAllViews();
+        linearLayout.addView(recyclerView);
         this.loadTasks();
     }
 }

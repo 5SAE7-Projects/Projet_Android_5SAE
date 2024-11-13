@@ -1,7 +1,9 @@
 package tn.esprit.espritclubs.fragments.bacem;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
@@ -21,7 +26,10 @@ import java.util.List;
 import tn.esprit.espritclubs.OnDialogCloseListener;
 import tn.esprit.espritclubs.R;
 import tn.esprit.espritclubs.activities.bacemActivities.Adapter.ToDoAdapter;
+import tn.esprit.espritclubs.database.AppDatabase;
 import tn.esprit.espritclubs.entities.Task;
+import tn.esprit.espritclubs.entities.User;
+import tn.esprit.espritclubs.fragments.houssem.main.LoginFragment;
 
 public class BacemFragment extends Fragment implements OnDialogCloseListener {
 
@@ -29,9 +37,14 @@ public class BacemFragment extends Fragment implements OnDialogCloseListener {
     private TabLayout tabLayout;
     private RecyclerView recyclerView;
     private FloatingActionButton addButton;
+    private ImageView imageView;
+    private TextView textView;
+    private TextView textView2;
     private List<Task> mList;
     private ToDoAdapter adapter;
-
+    private User currentUser;
+    private AppDatabase database;
+    private SharedPreferences sp;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -54,6 +67,7 @@ public class BacemFragment extends Fragment implements OnDialogCloseListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sp = getActivity().getSharedPreferences(LoginFragment.SHARED_NAME, Context.MODE_PRIVATE);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -70,11 +84,18 @@ public class BacemFragment extends Fragment implements OnDialogCloseListener {
         View view = inflater.inflate(R.layout.fragment_bacem, container, false);
 
         // Initialize views
+        database= AppDatabase.getDatabase(getContext());
+        currentUser = database.userDao().getUserByUid(Integer.parseInt(sp.getString("id","1")));
         frameLayout = view.findViewById(R.id.frameLayout);
+        imageView = view.findViewById(R.id.imageView00);
         tabLayout = view.findViewById(R.id.tabLayout);
         recyclerView = view.findViewById(R.id.recyclerView);
         addButton = view.findViewById(R.id.addButton1);
-
+        textView = view.findViewById(R.id.textView);
+        textView2 = view.findViewById(R.id.textView2);
+        textView.setText(currentUser.getFirstName());
+        textView.setText(currentUser.getEmail());
+        imageView.set
         // Initialize adapter with parent fragment for handling child fragment manager
         //adapter = new ToDoAdapter(this);  // Pass `this` as BacemFragment instance
         //recyclerView.setHasFixedSize(true);

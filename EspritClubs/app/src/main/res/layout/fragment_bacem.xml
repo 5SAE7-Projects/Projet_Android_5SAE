@@ -29,6 +29,7 @@
 
                 <ImageView
                     android:id="@+id/imageView00"
+                    android:src=""
                     android:layout_width="100dp"
                     android:layout_height="150dp"
                     app:layout_constraintBottom_toTopOf="@+id/textView"
@@ -45,7 +46,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Bacem Jaza"
                     android:textColor="#ffffff"
                     android:textSize="38sp"
                     tools:layout_editor_absoluteY="156dp" />
@@ -56,7 +56,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Bacem.jaza@esprit.tn"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
                     android:textStyle="bold"

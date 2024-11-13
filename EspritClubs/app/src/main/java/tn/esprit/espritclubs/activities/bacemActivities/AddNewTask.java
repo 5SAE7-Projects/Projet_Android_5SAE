@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -94,7 +95,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 database = AppDatabase.getDatabase(getContext());
                 TaskDao taskDao = database.taskDao();
                 if(mEditText.getText().toString().isEmpty())
-                    return;
+                    Toast.makeText(getContext(), "Please enter a valid Task!", Toast.LENGTH_SHORT).show();
 //                if(isUpdate){
 //                    update
 //                }
