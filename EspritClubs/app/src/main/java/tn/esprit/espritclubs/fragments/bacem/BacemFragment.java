@@ -95,7 +95,7 @@ public class BacemFragment extends Fragment implements OnDialogCloseListener {
         textView2 = view.findViewById(R.id.textView2);
         textView.setText(currentUser.getFirstName());
         textView.setText(currentUser.getEmail());
-        imageView.set
+        //imageView.set
         // Initialize adapter with parent fragment for handling child fragment manager
         //adapter = new ToDoAdapter(this);  // Pass `this` as BacemFragment instance
         //recyclerView.setHasFixedSize(true);

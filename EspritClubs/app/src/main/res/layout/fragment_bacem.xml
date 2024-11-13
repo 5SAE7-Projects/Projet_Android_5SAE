@@ -29,7 +29,6 @@
 
                 <ImageView
                     android:id="@+id/imageView00"
-                    android:src=""
                     android:layout_width="100dp"
                     android:layout_height="150dp"
                     app:layout_constraintBottom_toTopOf="@+id/textView"
