@@ -6,14 +6,17 @@ import androidx.room.*;
 
 import java.util.concurrent.*;
 
+import tn.esprit.espritclubs.dao.EventDao;
 import tn.esprit.espritclubs.dao.UserDao;
+import tn.esprit.espritclubs.entities.Event;
 import tn.esprit.espritclubs.entities.User;
 import tn.esprit.espritclubs.utils.Converters;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Event.class}, version = 1, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
+    public abstract EventDao eventDao();
 
 
 
@@ -27,7 +30,7 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    AppDatabase.class, "clubs_database")
+                                    AppDatabase.class, "clubs_db")
                             .allowMainThreadQueries()
                             .build();
                 }
