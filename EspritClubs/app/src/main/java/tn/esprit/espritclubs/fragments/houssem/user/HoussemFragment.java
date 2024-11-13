@@ -136,15 +136,5 @@ public class HoussemFragment extends Fragment {
         filterList("Female"); // Adjust this value if your User class uses different gender identifiers
     }
 
-    private void loadAllReservations() {
-        // Fetch all reservations from the database
-        LiveData<List<Reservation>> allReservations = reservationDao.getAllReservations();
-        allReservations.observe(getViewLifecycleOwner(), new Observer<List<Reservation>>() {
-            @Override
-            public void onChanged(List<Reservation> reservations) {
-                // For testing purposes, show the count of reservations in a Toast
-                Toast.makeText(getContext(), "Total reservations: " + reservations.size(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+
 }
