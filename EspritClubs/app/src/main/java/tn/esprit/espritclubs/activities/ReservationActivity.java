@@ -21,6 +21,7 @@ public class ReservationActivity extends AppCompatActivity {
     private Button submitButton;
     private ReservationDao reservationDao;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

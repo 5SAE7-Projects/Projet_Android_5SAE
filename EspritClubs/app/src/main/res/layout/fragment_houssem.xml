@@ -7,52 +7,13 @@
     android:padding="16dp"
     tools:context=".fragments.houssem.user.HoussemFragment">
 
-    <SearchView
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/searchView"
-        android:iconifiedByDefault="false"
-        android:queryHint="Rechercher..."/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/gradientbg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:layout_weight="1"
-            android:id="@+id/allfilter"
-            android:text="All"
-            />
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/topfilter"
-            android:src="@drawable/avatar"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/junglefilter"
-            android:src="@drawable/avatara"/>
-
-
-
-    </LinearLayout>
-    <ListView
-        android:paddingTop="100dp"
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"/>
+        android:text="Reservation Details"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
 
     <EditText
         android:id="@+id/nameEditText"
@@ -81,10 +42,10 @@
         android:text="Submit Reservation" />
 
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/aaa"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/aaa"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reservationRecyclerView"

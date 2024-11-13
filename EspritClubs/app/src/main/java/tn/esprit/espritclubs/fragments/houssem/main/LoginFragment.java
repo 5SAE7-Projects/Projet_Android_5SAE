@@ -78,6 +78,8 @@ public class LoginFragment extends Fragment {
             username.setText(sp.getString("login", ""));
             password.setText(sp.getString("password", ""));
             verifiButtonLogin();
+
+            detectRole();
         }
 
         forgotPassword.setOnClickListener(houssem->{
